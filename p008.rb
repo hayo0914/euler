@@ -22,9 +22,7 @@ numbers =<<EOF
 71636269561882670428252483600823257530420752963450
 EOF
 
-numbers.gsub!(/\s/, '')
-numbers = numbers.split ""
-numbers.map!{|n| n.to_i}
+numbers = numbers.gsub!(/\s/, '').split("").map!{|n| n.to_i}
 
 largest = -1
 ans_values = []
@@ -33,8 +31,7 @@ numbers.each_with_index {|n, index|
   values = numbers[index..index+12]
   sum = values.inject(:*)
   if sum > largest then
-    largest = sum
-    ans_values = values
+    ans_values, largest = values,sum
   end
 }
 
